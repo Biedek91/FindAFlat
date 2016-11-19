@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
-@RestController("/rest/offers")
+@RestController
+@RequestMapping("/rest/offers")
 public class OffersController {
 
 	private final OffersFinder offersFinder;
