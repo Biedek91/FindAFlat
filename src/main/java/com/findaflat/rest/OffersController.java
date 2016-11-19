@@ -13,7 +13,7 @@ import java.util.Collection;
 @RestController("/rest/offers")
 public class OffersController {
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Collection<Offer>> findOffers(
 			@RequestBody
 					SearchCriteria searchCriteria) {
