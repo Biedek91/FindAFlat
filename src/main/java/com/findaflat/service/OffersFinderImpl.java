@@ -16,16 +16,13 @@ public class OffersFinderImpl implements OffersFinder {
 
 		Collection<Offer> offers = new ArrayList<>();
 		offers.add(Offer.builder().price(new BigDecimal(1000)).title("dupa")
-				.offerLocation(OfferLocation.builder().longitude(45.5433)
-						.lattitude(51.5678).build()).build());
+				.offerLocation(OfferLocation.builder().longitude(45.5433).lattitude(51.5678).build()).build());
 
 		offers.add(Offer.builder().price(new BigDecimal(2000)).title("dupa2")
-				.offerLocation(OfferLocation.builder().longitude(25.5433)
-						.lattitude(21.5678).build()).build());
+				.offerLocation(OfferLocation.builder().longitude(25.5433).lattitude(21.5678).build()).build());
 
 		offers.add(Offer.builder().price(new BigDecimal(3000)).title("dupa3")
-				.offerLocation(OfferLocation.builder().longitude(35.5433)
-						.lattitude(31.5678).build()).build());
+				.offerLocation(OfferLocation.builder().longitude(35.5433).lattitude(31.5678).build()).build());
 
 		return offers;
 	}

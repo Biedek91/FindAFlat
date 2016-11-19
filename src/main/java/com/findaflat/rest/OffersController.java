@@ -25,8 +25,7 @@ public class OffersController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Collection<Offer>> findOffers(
-			@RequestBody SearchCriteria searchCriteria) {
+	public ResponseEntity<Collection<Offer>> findOffers(@RequestBody SearchCriteria searchCriteria) {
 		Collection<Offer> offers = offersFinder.findOffer(searchCriteria);
 		return new ResponseEntity<>(offers, HttpStatus.OK);
 	}

@@ -41,23 +41,17 @@ public class FindOfferTest {
 
 	@Before
 	public void setupMockMvc() {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-				.build();
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 	}
 
 	@Test
 	public void OffersController() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.post("/rest/offers")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content("{\"price\": 1000, \"title\": \"dupa\"}"))
-				.andExpect(MockMvcResultMatchers.status().isOk()).andExpect(
-				MockMvcResultMatchers.jsonPath("$[0].price", Matchers.is(1000)))
-				.andExpect(MockMvcResultMatchers
-						.jsonPath("$[0].title", Matchers.is("dupa"))).andExpect(
-				MockMvcResultMatchers.jsonPath("$[0].offerLocation.longitude",
-						Matchers.is(45.5433))).andExpect(MockMvcResultMatchers
-				.jsonPath("$[0].offerLocation.lattitude",
-						Matchers.is(51.5678)));
+		mockMvc.perform(MockMvcRequestBuilders.post("/rest/offers").contentType(MediaType.APPLICATION_JSON)
+				.content("{\"price\": 1000, \"title\": \"dupa\"}")).andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].price", Matchers.is(1000)))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].title", Matchers.is("dupa")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].offerLocation.longitude", Matchers.is(45.5433)))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].offerLocation.lattitude", Matchers.is(51.5678)));
 	}
 
 	@Configuration
@@ -66,10 +60,8 @@ public class FindOfferTest {
 		OffersFinder createOfferFinder() {
 			return searchCriteria -> {
 				Collection<Offer> offers = new ArrayList<>();
-				offers.add(Offer.builder().price(new BigDecimal(1000))
-						.title("dupa").offerLocation(
-								OfferLocation.builder().longitude(45.5433)
-										.lattitude(51.5678).build()).build());
+				offers.add(Offer.builder().price(new BigDecimal(1000)).title("dupa")
+						.offerLocation(OfferLocation.builder().longitude(45.5433).lattitude(51.5678).build()).build());
 				return offers;
 			};
 		}
